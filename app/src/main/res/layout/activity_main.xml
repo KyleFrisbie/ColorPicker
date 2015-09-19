@@ -30,13 +30,18 @@
             android:layout_alignParentEnd="true"/>
 
     <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView"
+            android:contentDescription="@string/image_view"
+            android:layout_below="@+id/numberPicker_Red"/>
+
+    <Button
+            android:id="@+id/submit_color_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView"
-            android:layout_alignParentBottom="true"
-            android:contentDescription="@string/image_view"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/numberPicker_Red"/>
+            android:text="@string/submit_color_button"
+            android:layout_below="@+id/numberPicker_Red"
+            android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

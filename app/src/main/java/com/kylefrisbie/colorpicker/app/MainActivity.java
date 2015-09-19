@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 
@@ -45,13 +44,6 @@ public class MainActivity extends Activity {
         mColorBox = (ImageView)findViewById(R.id.imageView);
         resetBackgroundColor();
 
-        mColorBox.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                setColorPickResult();
-                return false;
-            }
-        });
         mRedButton = (NumberPicker)findViewById(R.id.numberPicker_Red);
         initializeNumberPicker(mRedButton);
 
