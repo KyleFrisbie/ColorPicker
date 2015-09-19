@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 
@@ -13,6 +15,7 @@ public class MainActivity extends Activity {
 
     private NumberPicker mRedButton, mBlueButton, mGreenButton;
     private ImageView mColorBox;
+    private Button mSubmitColorButton;
     private final int MIN_VALUE = 0;
     private final int MAX_VALUE = 255;
     private int red, green, blue = 0;
@@ -74,6 +77,15 @@ public class MainActivity extends Activity {
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 blue = newVal;
                 resetBackgroundColor();
+            }
+        });
+
+        mSubmitColorButton = (Button) findViewById(R.id.submit_color_button);
+        mSubmitColorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setColorPickResult();
+                finish();
             }
         });
     }
