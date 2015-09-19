@@ -34,14 +34,15 @@
             android:layout_height="match_parent"
             android:id="@+id/imageView"
             android:contentDescription="@string/image_view"
-            android:layout_below="@+id/numberPicker_Red"/>
+            android:layout_below="@+id/numberPicker_Red"
+        android:layout_above="@+id/submit_color_button" />
 
     <Button
             android:id="@+id/submit_color_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/submit_color_button"
-            android:layout_below="@+id/numberPicker_Red"
-            android:layout_centerHorizontal="true"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
