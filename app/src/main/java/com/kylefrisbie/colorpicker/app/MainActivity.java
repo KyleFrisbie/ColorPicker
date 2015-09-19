@@ -1,11 +1,10 @@
 package com.kylefrisbie.colorpicker.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
@@ -18,6 +17,9 @@ public class MainActivity extends Activity {
     private final int MIN_VALUE = 0;
     private final int MAX_VALUE = 255;
     private int red, green, blue = 0;
+    private final String RED = "Red";
+    private final String GREEN = "Green";
+    private final String BLUE = "Blue";
 
     protected void initializeNumberPicker(NumberPicker picker) {
         picker.setMinValue(MIN_VALUE);
@@ -28,6 +30,13 @@ public class MainActivity extends Activity {
         mColorBox.setBackgroundColor(Color.rgb(red, green, blue));
     }
 
+    private void setColorPickResult() {
+        Intent data = new Intent();
+        data.putExtra(RED, red);
+        data.putExtra(GREEN, green);
+        data.putExtra(BLUE, blue);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +45,13 @@ public class MainActivity extends Activity {
         mColorBox = (ImageView)findViewById(R.id.imageView);
         resetBackgroundColor();
 
+        mColorBox.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                setColorPickResult();
+                return false;
+            }
+        });
         mRedButton = (NumberPicker)findViewById(R.id.numberPicker_Red);
         initializeNumberPicker(mRedButton);
 
