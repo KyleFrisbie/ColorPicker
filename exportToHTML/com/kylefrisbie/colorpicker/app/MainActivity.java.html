@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,50); }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(104,151,187); }
+.s3 { color: rgb(128,128,128); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MainActivity.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<span class="s0">package </span><span class="s1">com.kylefrisbie.colorpicker.app</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">import </span><span class="s1">android.app.Activity</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.graphics.Color</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.view.Menu</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.view.MenuItem</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.view.MotionEvent</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.widget.ImageView</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.widget.NumberPicker</span><span class="s0">;</span><span class="s1"> 
+ 
+ 
+</span><span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">Activity { 
+ 
+    </span><span class="s0">private </span><span class="s1">NumberPicker mRedButton</span><span class="s0">, </span><span class="s1">mBlueButton</span><span class="s0">, </span><span class="s1">mGreenButton</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">ImageView mColorBox</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private final int </span><span class="s1">MIN_VALUE = </span><span class="s2">0</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private final int </span><span class="s1">MAX_VALUE = </span><span class="s2">255</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private int </span><span class="s1">red</span><span class="s0">, </span><span class="s1">green</span><span class="s0">, </span><span class="s1">blue = </span><span class="s2">0</span><span class="s0">;</span><span class="s1"> 
+ 
+    </span><span class="s0">protected void </span><span class="s1">initializeNumberPicker(NumberPicker picker) { 
+        picker.setMinValue(MIN_VALUE)</span><span class="s0">;</span><span class="s1"> 
+        picker.setMaxValue(MAX_VALUE)</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s0">protected void </span><span class="s1">resetBackgroundColor() { 
+        mColorBox.setBackgroundColor(Color.rgb(red</span><span class="s0">, </span><span class="s1">green</span><span class="s0">, </span><span class="s1">blue))</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span><span class="s1"> 
+        setContentView(R.layout.activity_main)</span><span class="s0">;</span><span class="s1"> 
+ 
+        mColorBox = (ImageView)findViewById(R.id.imageView)</span><span class="s0">;</span><span class="s1"> 
+        resetBackgroundColor()</span><span class="s0">;</span><span class="s1"> 
+ 
+        mRedButton = (NumberPicker)findViewById(R.id.numberPicker_Red)</span><span class="s0">;</span><span class="s1"> 
+        initializeNumberPicker(mRedButton)</span><span class="s0">;</span><span class="s1"> 
+ 
+        mRedButton.setOnValueChangedListener(</span><span class="s0">new </span><span class="s1">NumberPicker.OnValueChangeListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onValueChange(NumberPicker picker</span><span class="s0">, int </span><span class="s1">oldVal</span><span class="s0">, int </span><span class="s1">newVal) { 
+                red = newVal</span><span class="s0">;</span><span class="s1"> 
+                resetBackgroundColor()</span><span class="s0">;</span><span class="s1"> 
+            } 
+        })</span><span class="s0">;</span><span class="s1"> 
+ 
+        mGreenButton = (NumberPicker)findViewById(R.id.numberPicker_Green)</span><span class="s0">;</span><span class="s1"> 
+        initializeNumberPicker(mGreenButton)</span><span class="s0">;</span><span class="s1"> 
+ 
+        mGreenButton.setOnValueChangedListener(</span><span class="s0">new </span><span class="s1">NumberPicker.OnValueChangeListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onValueChange(NumberPicker picker</span><span class="s0">, int </span><span class="s1">oldVal</span><span class="s0">, int </span><span class="s1">newVal) { 
+                green = newVal</span><span class="s0">;</span><span class="s1"> 
+                resetBackgroundColor()</span><span class="s0">;</span><span class="s1"> 
+            } 
+        })</span><span class="s0">;</span><span class="s1"> 
+ 
+        mBlueButton = (NumberPicker)findViewById(R.id.numberPicker_Blue)</span><span class="s0">;</span><span class="s1"> 
+        initializeNumberPicker(mBlueButton)</span><span class="s0">;</span><span class="s1"> 
+ 
+        mBlueButton.setOnValueChangedListener(</span><span class="s0">new </span><span class="s1">NumberPicker.OnValueChangeListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onValueChange(NumberPicker picker</span><span class="s0">, int </span><span class="s1">oldVal</span><span class="s0">, int </span><span class="s1">newVal) { 
+                blue = newVal</span><span class="s0">;</span><span class="s1"> 
+                resetBackgroundColor()</span><span class="s0">;</span><span class="s1"> 
+            } 
+        })</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+ 
+    @Override 
+    </span><span class="s0">public boolean </span><span class="s1">onCreateOptionsMenu(Menu menu) { 
+        </span><span class="s3">// Inflate the menu; this adds items to the action bar if it is present.</span><span class="s1"> 
+        getMenuInflater().inflate(R.menu.menu_main</span><span class="s0">, </span><span class="s1">menu)</span><span class="s0">;</span><span class="s1"> 
+        </span><span class="s0">return true;</span><span class="s1"> 
+    } 
+ 
+</span><span class="s3">//    @Override</span><span class="s1"> 
+</span><span class="s3">//    public boolean onOptionsItemSelected(MenuItem item) {</span><span class="s1"> 
+</span><span class="s3">//        // Handle action bar item clicks here. The action bar will</span><span class="s1"> 
+</span><span class="s3">//        // automatically handle clicks on the Home/Up button, so long</span><span class="s1"> 
+</span><span class="s3">//        // as you specify a parent activity in AndroidManifest.xml.</span><span class="s1"> 
+</span><span class="s3">//        int id = item.getItemId();</span><span class="s1"> 
+</span><span class="s3">//</span><span class="s1"> 
+</span><span class="s3">//        //noinspection SimplifiableIfStatement</span><span class="s1"> 
+</span><span class="s3">//        if (id == R.id.action_settings) {</span><span class="s1"> 
+</span><span class="s3">//            return true;</span><span class="s1"> 
+</span><span class="s3">//        }</span><span class="s1"> 
+</span><span class="s3">//</span><span class="s1"> 
+</span><span class="s3">//        return super.onOptionsItemSelected(item);</span><span class="s1"> 
+</span><span class="s3">//    }</span><span class="s1"> 
+} 
+</span></pre>
+</body>
+</html>
