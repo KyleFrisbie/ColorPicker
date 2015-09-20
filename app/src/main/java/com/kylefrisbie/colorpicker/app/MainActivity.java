@@ -37,6 +37,7 @@ public class MainActivity extends Activity {
         data.putExtra(RED, red);
         data.putExtra(GREEN, green);
         data.putExtra(BLUE, blue);
+        setResult(RESULT_OK, data);
     }
 
     @Override
